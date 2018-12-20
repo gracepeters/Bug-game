@@ -5,6 +5,7 @@ var circle;
 let lives = 3;
 let score = 0;
 var button;
+let highscore=0;
 
 
 function setup() {
@@ -58,6 +59,7 @@ function draw() {
 
     if (lives <= 0) {
         text("GAME OVER", width / 2.15, height / 2.1)
+        text("Highscore: "+ highscore, windowWidth/2.15, 280)
         ballArray = []
         button.show()
         // button = createButton('Play again');
@@ -128,6 +130,9 @@ class Ball {
                 ballArray.splice(ballArray.indexOf(this), 1)
                 ballArray.push(new Ball(random(10, 50)))
                 score += 100;
+            }
+            if (score>=highscore){
+                highscore=score;
             }
         }
     }
